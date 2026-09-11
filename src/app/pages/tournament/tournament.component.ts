@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { StructuredDataService } from '../../feature/seo/structured-data.service';
 
 interface TournamentMatch {
 	stage: string;
@@ -15,6 +16,8 @@ interface Tournament {
 	name: string;
 	status: 'UPCOMING' | 'ONGOING' | 'COMPLETED';
 	dates: string;
+	startDate: string;
+	endDate: string;
 	format: string;
 	prizePool: string;
 	location: string;
@@ -31,6 +34,8 @@ const TOURNAMENTS: Tournament[] = [
 		name: 'Community Chess Cup',
 		status: 'UPCOMING',
 		dates: '18 SEP — 20 SEP 2026',
+		startDate: '2026-09-18',
+		endDate: '2026-09-20',
 		format: 'Rapid · Swiss, 7 rounds',
 		prizePool: '$500',
 		location: 'Online · Kyiv time',
@@ -50,6 +55,8 @@ const TOURNAMENTS: Tournament[] = [
 		name: 'Community Series',
 		status: 'UPCOMING',
 		dates: '20 SEP — 27 SEP 2026',
+		startDate: '2026-09-20',
+		endDate: '2026-09-27',
 		format: 'BO3 · Group stage into single elimination',
 		prizePool: '$1,200',
 		location: 'Online · Kyiv time',
@@ -90,6 +97,8 @@ const TOURNAMENTS: Tournament[] = [
 		name: 'Brawl Community Cup',
 		status: 'UPCOMING',
 		dates: '22 SEP 2026',
+		startDate: '2026-09-22',
+		endDate: '2026-09-22',
 		format: '3v3 · Single elimination',
 		prizePool: '$300',
 		location: 'Online · Kyiv time',
@@ -113,6 +122,8 @@ const TOURNAMENTS: Tournament[] = [
 		name: 'Community Chess Cup',
 		status: 'COMPLETED',
 		dates: '06 SEP — 08 SEP 2026',
+		startDate: '2026-09-06',
+		endDate: '2026-09-08',
 		format: 'Rapid · Swiss, 7 rounds',
 		prizePool: '$500',
 		location: 'Online · Kyiv time',
@@ -138,6 +149,8 @@ const TOURNAMENTS: Tournament[] = [
 		name: 'Community Series',
 		status: 'COMPLETED',
 		dates: '30 AUG — 06 SEP 2026',
+		startDate: '2026-08-30',
+		endDate: '2026-09-06',
 		format: 'BO3 · Group stage into single elimination',
 		prizePool: '$1,200',
 		location: 'Online · Kyiv time',
@@ -165,6 +178,8 @@ const TOURNAMENTS: Tournament[] = [
 		name: 'Brawl Community Cup',
 		status: 'COMPLETED',
 		dates: '04 SEP 2026',
+		startDate: '2026-09-04',
+		endDate: '2026-09-04',
 		format: '3v3 · Single elimination',
 		prizePool: '$300',
 		location: 'Online · Kyiv time',
@@ -185,10 +200,31 @@ const TOURNAMENTS: Tournament[] = [
 	styleUrl: './tournament.component.scss',
 })
 export class TournamentComponent {
+	private readonly _structuredData = inject(StructuredDataService);
 	protected readonly tournament: Tournament;
 
 	constructor() {
 		const slug = inject(ActivatedRoute).snapshot.data['slug'] as string;
 		this.tournament = TOURNAMENTS.find((item) => item.slug === slug) ?? TOURNAMENTS[0];
+
+		this._structuredData.set('tournament-jsonld', {
+			'@context': 'https://schema.org',
+			'@type': 'SportsEvent',
+			name: this.tournament.name,
+			sport: this.tournament.game,
+			startDate: this.tournament.startDate,
+			endDate: this.tournament.endDate,
+			eventStatus: 'https://schema.org/EventScheduled',
+			eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+			location: {
+				'@type': 'VirtualLocation',
+				url: 'https://team.webart.work/tournaments/' + this.tournament.slug,
+			},
+			description: this.tournament.description,
+			competitor: this.tournament.participants.map((name) => ({
+				'@type': 'SportsTeam',
+				name,
+			})),
+		});
 	}
 }

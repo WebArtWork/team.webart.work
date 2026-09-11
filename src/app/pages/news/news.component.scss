@@ -43,6 +43,17 @@ h2 {
 	letter-spacing: 0;
 	margin: 10px 0 0;
 }
+.news-card {
+	display: block;
+	color: inherit;
+	transition: transform 0.2s;
+}
+.news-card:hover {
+	transform: translateY(-4px);
+}
+.news-card:hover h3 {
+	color: var(--c-primary);
+}
 .news-visual {
 	height: 230px;
 	position: relative;

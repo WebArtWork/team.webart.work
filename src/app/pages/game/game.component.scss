@@ -321,8 +321,20 @@ h2 {
 	margin-bottom: 8px;
 }
 .news-card {
+	display: block;
+	color: inherit;
 	border: 1px solid var(--c-border);
 	padding: 20px;
+	transition:
+		transform 0.2s,
+		border-color 0.2s;
+}
+.news-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--c-primary);
+}
+.news-card:hover h3 {
+	color: var(--c-primary);
 }
 .news-meta {
 	display: flex;

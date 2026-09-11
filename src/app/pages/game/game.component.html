@@ -109,22 +109,22 @@
 		@if (tournamentsUpcoming.length || tournamentsPast.length) {
 			<div class="tournament-list">
 				@for (item of tournamentsUpcoming; track item.id) {
-					<article class="tournament-row">
+					<a class="tournament-row" [routerLink]="['/tournaments', item.id]">
 						<div class="tournament-info">
 							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
 						</div>
 						<span class="tournament-dates">{{ item.dates }}</span>
 						<span class="tournament-status">{{ item.status }}</span>
-					</article>
+					</a>
 				}
 				@for (item of tournamentsPast; track item.id) {
-					<article class="tournament-row">
+					<a class="tournament-row" [routerLink]="['/tournaments', item.id]">
 						<div class="tournament-info">
 							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
 						</div>
 						<span class="tournament-dates">{{ item.dates }}</span>
 						<span class="tournament-status accent">{{ item.placement }}</span>
-					</article>
+					</a>
 				}
 			</div>
 		} @else {
@@ -190,13 +190,11 @@
 		</div>
 		<div class="news-grid grid gap-5 md:grid-cols-3">
 			@for (article of news; track article.slug) {
-				<article class="news-card">
+				<a class="news-card" [routerLink]="'/news/' + article.slug">
 					<p class="news-meta">{{ article.tag }} <span>{{ article.meta }}</span></p>
 					<h3>{{ article.title }}</h3>
-					<a class="story-link" [routerLink]="'/news/' + article.slug"
-						>Read the story <span aria-hidden="true">↗</span></a
-					>
-				</article>
+					<span class="story-link">Read the story <span aria-hidden="true">↗</span></span>
+				</a>
 			}
 		</div>
 		<a class="text-link" routerLink="/news">See all news <span aria-hidden="true">↗</span></a>
