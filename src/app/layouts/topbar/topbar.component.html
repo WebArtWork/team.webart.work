@@ -1,0 +1,45 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+	<div class="shell header-inner">
+		<a routerLink="/" class="brand" aria-label="Web Art Work Esports home"
+			><img src="brand-logo.svg" width="37" height="43" alt="" /><span
+				>WEB ART WORK<small>ESPORTS CLUB</small></span
+			></a
+		>
+		<nav class="desktop-nav" aria-label="Main navigation">
+			<a routerLink="/teams">Teams</a><a routerLink="/matches">Matches</a
+			><a routerLink="/news">News</a><a routerLink="/about">About us</a>
+		</nav>
+		<div class="header-actions">
+			<button
+				class="theme-button"
+				[attr.aria-label]="toggleLabel()"
+				(click)="toggleMode()"
+				type="button"
+			>
+				<span aria-hidden="true">{{ mode() === 'dark' ? '☀' : '☾' }}</span>
+			</button>
+			<a class="community-link" routerLink="/community"
+				>WAW COMMUNITY <span aria-hidden="true">↗</span></a
+			>
+			<button
+				class="mobile-menu-button"
+				type="button"
+				aria-controls="mobile-nav"
+				[attr.aria-expanded]="mobileMenuOpen()"
+				(click)="mobileMenuOpen.set(!mobileMenuOpen())"
+			>
+				{{ mobileMenuOpen() ? 'Close' : 'Menu' }}
+			</button>
+		</div>
+	</div>
+	@if (mobileMenuOpen()) {
+		<nav id="mobile-nav" class="mobile-nav shell" aria-label="Mobile navigation">
+			<a routerLink="/teams" (click)="mobileMenuOpen.set(false)">Teams</a
+			><a routerLink="/matches" (click)="mobileMenuOpen.set(false)">Matches</a
+			><a routerLink="/news" (click)="mobileMenuOpen.set(false)">News</a
+			><a routerLink="/about" (click)="mobileMenuOpen.set(false)">About us</a
+			><a routerLink="/community" (click)="mobileMenuOpen.set(false)">WAW Community ↗</a>
+		</nav>
+	}
+</header>

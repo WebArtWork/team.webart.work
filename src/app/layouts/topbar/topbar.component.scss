@@ -1,0 +1,137 @@
+:host {
+	display: block;
+	position: sticky;
+	top: 0;
+	z-index: 50;
+}
+.site-header {
+	background: var(--c-bg-primary);
+	border-bottom: 1px solid var(--c-border);
+}
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 25px;
+	min-height: 88px;
+}
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	font-size: 14px;
+	font-weight: 800;
+	letter-spacing: 0.07em;
+}
+.brand small {
+	display: block;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.24em;
+	color: var(--c-text-muted);
+	margin-top: 5px;
+}
+.desktop-nav {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+	font-size: 14px;
+}
+.desktop-nav a {
+	padding: 32px 0;
+	border-bottom: 2px solid transparent;
+}
+.desktop-nav a:hover {
+	border-color: var(--c-primary);
+}
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+.theme-button {
+	font-size: 24px;
+	width: 40px;
+	height: 40px;
+	color: var(--c-text-muted);
+}
+.community-link {
+	display: flex;
+	gap: 22px;
+	align-items: center;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+}
+.community-link span {
+	color: var(--c-primary);
+	font-size: 20px;
+}
+.mobile-menu-button {
+	display: none;
+}
+.mobile-nav {
+	display: flex;
+	flex-direction: column;
+	padding-block: 15px;
+	gap: 0;
+}
+.mobile-nav a {
+	padding: 12px 0;
+	border-top: 1px solid var(--c-border);
+}
+.skip-link {
+	position: fixed;
+	top: -100px;
+	left: 15px;
+	background: var(--c-primary);
+	color: #111;
+	padding: 15px;
+	z-index: 100;
+}
+.skip-link:focus {
+	top: 10px;
+}
+@media (max-width: 900px) {
+	.community-link {
+		display: none;
+	}
+	.desktop-nav {
+		gap: 22px;
+	}
+	.header-inner {
+		min-height: 76px;
+	}
+}
+@media (max-width: 640px) {
+	.desktop-nav {
+		display: none;
+	}
+	.mobile-menu-button {
+		display: block;
+		font-size: 14px;
+		border: 1px solid var(--c-border);
+		padding: 9px 12px;
+	}
+	.header-actions {
+		gap: 10px;
+	}
+	.header-inner {
+		min-height: 74px;
+		gap: 12px;
+	}
+	.brand {
+		font-size: 12px;
+		gap: 8px;
+	}
+	.brand img {
+		width: 29px;
+		height: 35px;
+	}
+	.brand small {
+		font-size: 12px;
+	}
+	.theme-button {
+		width: 30px;
+	}
+}

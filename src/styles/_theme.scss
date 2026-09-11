@@ -1,0 +1,36 @@
+:root {
+	color-scheme: light;
+	--c-primary: #7b7b00;
+	--c-primary-hover: #656500;
+	--c-secondary: #c53d3d;
+	--c-bg-primary: #f4f4f0;
+	--c-bg-secondary: #e9e9e3;
+	--c-bg-tertiary: #ffffff;
+	--c-text: #41413e;
+	--c-text-strong: #181918;
+	--c-text-muted: #62635d;
+	--c-border: #d3d4cc;
+	--ff-base: 'Inter', Arial, sans-serif;
+	--ff-display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+	--fs: 16px;
+}
+html[data-mode='dark'] {
+	color-scheme: dark;
+	--c-primary: #d7d71d;
+	--c-primary-hover: #e9e936;
+	--c-bg-primary: #111213;
+	--c-bg-secondary: #191a1b;
+	--c-bg-tertiary: #252627;
+	--c-text: #d2d2ce;
+	--c-text-strong: #f4f4ed;
+	--c-text-muted: #989a98;
+	--c-border: #303132;
+}
+.hero,
+.manifesto-strip,
+.about-section,
+.news-type,
+.news-community,
+.button-primary {
+	--c-primary: #d7d71d;
+}
