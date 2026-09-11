@@ -1,0 +1,102 @@
+<div lang="en">
+	<section class="matches-hero relative overflow-hidden" aria-labelledby="matches-hero-title">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">IN THE SERVER</p>
+				<h1 id="matches-hero-title">THE NEXT<br /><span>ROUND.</span></h1>
+				<p class="hero-description">
+					Every match, every result.<br />Follow the tag across every server.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="matches-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<p class="eyebrow accent">FULL SCHEDULE</p>
+				<h2 id="matches-title">MATCHES</h2>
+			</div>
+			<div class="match-tabs flex" aria-label="Match schedule">
+				<button
+					type="button"
+					[class.active]="matchView() === 'upcoming'"
+					[attr.aria-pressed]="matchView() === 'upcoming'"
+					(click)="matchView.set('upcoming')"
+				>
+					Upcoming</button
+				><button
+					type="button"
+					[class.active]="matchView() === 'results'"
+					[attr.aria-pressed]="matchView() === 'results'"
+					(click)="matchView.set('results')"
+				>
+					Results
+				</button>
+			</div>
+		</div>
+		<p class="preview-note">
+			Season preview · Illustrative fixtures and results · All times Kyiv
+		</p>
+		<div class="match-list" aria-live="polite">
+			@if (matchView() === 'upcoming') {
+				@for (match of fixtures; track match.game) {
+					<article class="match-row">
+						<span class="game-label">{{ match.game }}</span>
+						<div class="match-date">
+							<strong>{{ match.date }}</strong
+							><span>{{ match.time }}</span>
+						</div>
+						<div class="match-teams">
+							<span class="team-name"
+								><img src="brand-logo.svg" alt="" width="29" height="34" />
+								WAW</span
+							><span class="versus">VS</span
+							><span class="team-name"
+								><span class="opponent-badge">{{ match.badge }}</span
+								>{{ match.opponent }}</span
+							>
+						</div>
+						<div class="match-event">
+							{{ match.event }}<span>{{ match.format }} · Online</span>
+						</div>
+						<span class="scheduled">SCHEDULED</span>
+					</article>
+				}
+			} @else {
+				@for (match of results; track match.game) {
+					<article class="match-row">
+						<span class="game-label">{{ match.game }}</span>
+						<div class="match-date">
+							<strong>{{ match.date }}</strong
+							><span>FINAL</span>
+						</div>
+						<div class="match-teams">
+							<span class="team-name"
+								><img src="brand-logo.svg" alt="" width="29" height="34" />
+								WAW</span
+							><strong class="accent">{{ match.score }}</strong
+							><span class="team-name"
+								><span class="opponent-badge">{{ match.badge }}</span
+								>{{ match.opponent }}</span
+							>
+						</div>
+						<div class="match-event">
+							{{ match.event }}<span>{{ match.format }} · Online</span>
+						</div>
+						<span class="scheduled accent">VICTORY</span>
+					</article>
+				}
+			}
+		</div>
+	</section>
+</div>

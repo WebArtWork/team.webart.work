@@ -1,0 +1,98 @@
+<div lang="en">
+	<section class="media-hero relative overflow-hidden" aria-labelledby="media-hero-title">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">SEE THE CREW IN ACTION</p>
+				<h1 id="media-hero-title">THE<br /><span>MEDIA.</span></h1>
+				<p class="hero-description">
+					Photos, videos, and streams from both sides of the screen.<br />Everything worth
+					replaying.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="media-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<p class="eyebrow accent">CLUB JOURNAL</p>
+				<h2 id="media-title">MEDIA</h2>
+			</div>
+			<div class="media-tabs flex" aria-label="Media type">
+				<button
+					type="button"
+					[class.active]="mediaView() === 'photos'"
+					[attr.aria-pressed]="mediaView() === 'photos'"
+					(click)="mediaView.set('photos')"
+				>
+					Photos</button
+				><button
+					type="button"
+					[class.active]="mediaView() === 'videos'"
+					[attr.aria-pressed]="mediaView() === 'videos'"
+					(click)="mediaView.set('videos')"
+				>
+					Videos</button
+				><button
+					type="button"
+					[class.active]="mediaView() === 'streams'"
+					[attr.aria-pressed]="mediaView() === 'streams'"
+					(click)="mediaView.set('streams')"
+				>
+					Streams
+				</button>
+			</div>
+		</div>
+		<p class="preview-note">Media preview · Illustrative content · All times Kyiv</p>
+
+		@if (mediaView() === 'photos') {
+			<div class="gallery-grid grid gap-4 md:grid-cols-3">
+				@for (item of photos; track item.id) {
+					<figure class="gallery-card">
+						<img
+							src="esports-hero.png"
+							alt="{{ item.caption }}"
+							width="1774"
+							height="887"
+							loading="lazy"
+						/><span class="gallery-tag">{{ item.tag }}</span>
+						<figcaption>{{ item.caption }}</figcaption>
+					</figure>
+				}
+			</div>
+		} @else if (mediaView() === 'videos') {
+			<div class="video-list">
+				@for (reel of videos; track reel.id) {
+					<article class="video-row">
+						<span class="video-play" aria-hidden="true">▶</span>
+						<span class="video-tag">{{ reel.tag }}</span>
+						<span class="video-title">{{ reel.title }}</span>
+						<span class="video-length">{{ reel.length }}</span>
+					</article>
+				}
+			</div>
+		} @else {
+			<div class="stream-list">
+				@for (stream of streams; track stream.id) {
+					<article class="stream-row">
+						<span class="stream-status" [class.replay]="stream.status === 'REPLAY'">{{
+							stream.status
+						}}</span>
+						<span class="stream-title">{{ stream.title }}</span>
+						<span class="stream-schedule">{{ stream.schedule }}</span>
+						<span class="stream-channel">{{ stream.channel }}</span>
+					</article>
+				}
+			</div>
+		}
+	</section>
+</div>

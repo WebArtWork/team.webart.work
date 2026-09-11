@@ -1,0 +1,79 @@
+<div lang="en">
+	<section
+		class="tournaments-hero relative overflow-hidden"
+		aria-labelledby="tournaments-hero-title"
+	>
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">WHERE WE COMPETE</p>
+				<h1 id="tournaments-hero-title">TOURNA-<br /><span>MENTS.</span></h1>
+				<p class="hero-description">
+					Every bracket, every cup, every server we show up to.<br />This is where the tag
+					gets tested.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="tournaments-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<p class="eyebrow accent">SEASON 2026</p>
+				<h2 id="tournaments-title">TOURNAMENTS</h2>
+			</div>
+			<div class="tournament-tabs flex" aria-label="Tournaments">
+				<button
+					type="button"
+					[class.active]="tournamentView() === 'upcoming'"
+					[attr.aria-pressed]="tournamentView() === 'upcoming'"
+					(click)="tournamentView.set('upcoming')"
+				>
+					Upcoming</button
+				><button
+					type="button"
+					[class.active]="tournamentView() === 'past'"
+					[attr.aria-pressed]="tournamentView() === 'past'"
+					(click)="tournamentView.set('past')"
+				>
+					Past
+				</button>
+			</div>
+		</div>
+		<p class="preview-note">Season preview · Illustrative entries · All times Kyiv</p>
+
+		<div class="tournament-list" aria-live="polite">
+			@if (tournamentView() === 'upcoming') {
+				@for (item of upcoming; track item.id) {
+					<article class="tournament-row">
+						<span class="game-label">{{ item.game }}</span>
+						<div class="tournament-info">
+							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
+						</div>
+						<span class="tournament-dates">{{ item.dates }}</span>
+						<span class="tournament-status">{{ item.status }}</span>
+					</article>
+				}
+			} @else {
+				@for (item of past; track item.id) {
+					<article class="tournament-row">
+						<span class="game-label">{{ item.game }}</span>
+						<div class="tournament-info">
+							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
+						</div>
+						<span class="tournament-dates">{{ item.dates }}</span>
+						<span class="tournament-status accent">{{ item.placement }}</span>
+					</article>
+				}
+			}
+		</div>
+	</section>
+</div>

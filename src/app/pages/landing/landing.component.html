@@ -11,39 +11,42 @@
 		<div class="hero-shade" aria-hidden="true"></div>
 		<div class="shell relative z-10">
 			<div class="hero-top flex items-center justify-between gap-4">
-				<span class="eyebrow">WEB ART WORK / ESPORTS</span
-				><span class="edition">SEASON 2026 — CHAPTER 01</span>
+				<span class="eyebrow" translate>WEB ART WORK / ESPORTS</span
+				><span class="edition" translate>SEASON 2026 — CHAPTER 01</span>
 			</div>
 			<div class="hero-copy">
-				<p class="eyebrow accent mb-5">BUILT TOGETHER. PLAYED TO WIN.</p>
-				<h1 id="hero-title">MORE THAN<br />A <span>GAME.</span></h1>
+				<p class="eyebrow accent mb-5" translate>BUILT TOGETHER. PLAYED TO WIN.</p>
+				<h1 id="hero-title"><span translate>MORE THAN</span><br />A <span translate>GAME.</span></h1>
 				<p class="hero-description">
-					Creators by nature. Competitors by choice.<br />This is the next chapter of Web
-					Art Work.
+					<span translate>Creators by nature. Competitors by choice.</span><br /><span translate
+						>This is the next chapter of Web Art Work.</span
+					>
 				</p>
 				<a class="button-primary mt-8" routerLink="/teams"
-					>Explore our teams <span aria-hidden="true">↗</span></a
+					><span translate>Explore our teams</span> <span aria-hidden="true">↗</span></a
 				>
 			</div>
 			<div class="hero-bottom flex items-end justify-between gap-6">
 				<div class="flex items-center gap-3">
 					<span class="ukraine-flag" aria-hidden="true"></span
-					><span>ROOTED IN UKRAINE.<br /><strong>CONNECTED BY THE GAME.</strong></span>
+					><span><span translate>ROOTED IN UKRAINE.</span><br /><strong
+								><span translate>CONNECTED BY THE GAME.</span></strong
+							></span>
 				</div>
 				<span class="hero-index" aria-hidden="true">01 <span>/ 03</span></span>
 			</div>
 		</div>
 	</section>
 	<div class="manifesto-strip" aria-hidden="true">
-		<span>CREATE.</span><span>COMPETE.</span><span>CONNECT.</span
-		><span class="outline-word">WEB ART WORK</span><span>CREATE.</span><span>COMPETE.</span>
+		<span translate>CREATE.</span><span translate>COMPETE.</span><span translate>CONNECT.</span
+		><span class="outline-word">WEB ART WORK</span><span translate>CREATE.</span><span translate>COMPETE.</span>
 	</div>
 
 	<section class="shell section-space" id="matches" aria-labelledby="matches-title">
 		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
 			<div>
-				<p class="eyebrow accent">IN THE SERVER</p>
-				<h2 id="matches-title">THE NEXT ROUND</h2>
+				<p class="eyebrow accent" translate>IN THE SERVER</p>
+				<h2 id="matches-title" translate>THE NEXT ROUND</h2>
 			</div>
 			<div class="match-tabs flex" aria-label="Match schedule">
 				<button
@@ -51,6 +54,7 @@
 					[class.active]="matchView() === 'upcoming'"
 					[attr.aria-pressed]="matchView() === 'upcoming'"
 					(click)="matchView.set('upcoming')"
+					translate
 				>
 					Upcoming</button
 				><button
@@ -58,12 +62,13 @@
 					[class.active]="matchView() === 'results'"
 					[attr.aria-pressed]="matchView() === 'results'"
 					(click)="matchView.set('results')"
+					translate
 				>
 					Results
 				</button>
 			</div>
 		</div>
-		<p class="preview-note">
+		<p class="preview-note" translate>
 			Season preview · Illustrative fixtures and results · All times Kyiv
 		</p>
 		<div class="match-list" aria-live="polite">
@@ -79,7 +84,7 @@
 							<span class="team-name"
 								><img src="brand-logo.svg" alt="" width="29" height="34" />
 								WAW</span
-							><span class="versus">VS</span
+							><span class="versus" translate>VS</span
 							><span class="team-name"
 								><span class="opponent-badge">{{ match.badge }}</span
 								>{{ match.opponent }}</span
@@ -88,7 +93,7 @@
 						<div class="match-event">
 							{{ match.event }}<span>{{ match.format }} · Online</span>
 						</div>
-						<span class="scheduled">SCHEDULED</span>
+						<span class="scheduled" translate>SCHEDULED</span>
 					</article>
 				}
 			} @else {
@@ -97,7 +102,7 @@
 						<span class="game-label">{{ match.game }}</span>
 						<div class="match-date">
 							<strong>{{ match.date }}</strong
-							><span>FINAL</span>
+							><span translate>FINAL</span>
 						</div>
 						<div class="match-teams">
 							<span class="team-name"
@@ -112,7 +117,7 @@
 						<div class="match-event">
 							{{ match.event }}<span>{{ match.format }} · Online</span>
 						</div>
-						<span class="scheduled accent">VICTORY</span>
+						<span class="scheduled accent" translate>VICTORY</span>
 					</article>
 				}
 			}
@@ -123,11 +128,13 @@
 		<div class="shell">
 			<div class="section-heading flex flex-wrap items-end justify-between gap-5">
 				<div>
-					<p class="eyebrow accent">DIFFERENT GAMES. SAME DNA.</p>
-					<h2 id="teams-title">OUR TEAMS</h2>
+					<p class="eyebrow accent" translate>DIFFERENT GAMES. SAME DNA.</p>
+					<h2 id="teams-title" translate>OUR TEAMS</h2>
 				</div>
 				<p class="section-description">
-					A shared ambition.<br />A whole new playing field.
+					<span translate>A shared ambition.</span><br /><span translate
+						>A whole new playing field.</span
+					>
 				</p>
 			</div>
 			<div class="grid gap-4 md:grid-cols-3">
@@ -135,7 +142,7 @@
 					<a class="game-card" [routerLink]="game.path">
 						<span class="game-card-top"
 							><span>WAW / {{ game.number }}</span
-							><span class="game-card-status">ROSTER PREVIEW</span></span
+							><span class="game-card-status" translate>ROSTER PREVIEW</span></span
 						>
 						<span class="game-word" [class.compact]="game.id === 'BRAWL STARS'">{{
 							game.id
@@ -153,8 +160,8 @@
 	</section>
 	<section class="shell section-space" id="news" aria-labelledby="news-title">
 		<div class="section-heading">
-			<p class="eyebrow accent">BEHIND THE TAG</p>
-			<h2 id="news-title">FROM THE INSIDE</h2>
+			<p class="eyebrow accent" translate>BEHIND THE TAG</p>
+			<h2 id="news-title" translate>FROM THE INSIDE</h2>
 		</div>
 		<div class="news-grid grid gap-5 md:grid-cols-3">
 			<article class="news-card">
@@ -165,34 +172,40 @@
 						width="1774"
 						height="887"
 						loading="lazy"
-					/><span class="news-tag">CLUB</span>
+					/><span class="news-tag" translate>CLUB</span>
 				</div>
-				<p class="news-meta">CHAPTER 01 <span>CLUB JOURNAL</span></p>
-				<h3>A new arena. The same Web Art Work spirit.</h3>
+				<p class="news-meta"><span translate>CHAPTER 01</span> <span translate>CLUB JOURNAL</span></p>
+				<h3 translate>A new arena. The same Web Art Work spirit.</h3>
 				<a class="story-link" routerLink="/news/a-new-arena"
-					>Read the story <span aria-hidden="true">↗</span></a
+					><span translate>Read the story</span> <span aria-hidden="true">↗</span></a
 				>
 			</article>
 			<article class="news-card">
 				<div class="news-visual news-type">
-					<span class="news-tag">TEAMS</span><span>ONE TAG.<br /><em>ALL IN.</em></span
+					<span class="news-tag" translate>TEAMS</span><span><span translate>ONE TAG.</span><br /><em
+							><span translate>ALL IN.</span></em
+						></span
 					><img src="brand-logo.svg" alt="" width="100" height="116" />
 				</div>
-				<p class="news-meta">THE LINEUP <span>TEAM NOTES</span></p>
-				<h3>Different roles. One way forward.</h3>
+				<p class="news-meta"><span translate>THE LINEUP</span> <span translate>TEAM NOTES</span></p>
+				<h3 translate>Different roles. One way forward.</h3>
 				<a class="story-link" routerLink="/news/one-way-forward"
-					>Read the story <span aria-hidden="true">↗</span></a
+					><span translate>Read the story</span> <span aria-hidden="true">↗</span></a
 				>
 			</article>
 			<article class="news-card">
 				<div class="news-visual news-community">
-					<span class="news-tag">COMMUNITY</span
-					><span class="community-word">PLAY.<br />CREATE.<br /><em>REPEAT.</em></span>
+					<span class="news-tag" translate>COMMUNITY</span
+					><span class="community-word"
+						><span translate>PLAY.</span><br /><span translate>CREATE.</span><br /><em
+							><span translate>REPEAT.</span></em
+						></span
+					>
 				</div>
-				<p class="news-meta">OUR CULTURE <span>COMMUNITY</span></p>
-				<h3>For the people on both sides of the screen.</h3>
+				<p class="news-meta"><span translate>OUR CULTURE</span> <span translate>COMMUNITY</span></p>
+				<h3 translate>For the people on both sides of the screen.</h3>
 				<a class="story-link" routerLink="/news/our-community"
-					>Read the story <span aria-hidden="true">↗</span></a
+					><span translate>Read the story</span> <span aria-hidden="true">↗</span></a
 				>
 			</article>
 		</div>
@@ -201,20 +214,23 @@
 	<section class="about-section" id="about">
 		<div class="shell grid items-center gap-10 md:grid-cols-[1fr_1.2fr]">
 			<div>
-				<p class="eyebrow">THIS IS WEB ART WORK</p>
-				<h2>CREATIVE MINDS.<br />COMPETITIVE<br /><span>HEARTS.</span></h2>
+				<p class="eyebrow" translate>THIS IS WEB ART WORK</p>
+				<h2><span translate>CREATIVE MINDS.</span><br /><span translate>COMPETITIVE</span><br /><span translate
+						>HEARTS.</span
+					></h2>
 			</div>
 			<div class="about-copy">
 				<p>
-					We build things. We push each other.<br />And when the server opens, we show up
-					as one.
+					<span translate>We build things. We push each other.</span><br /><span translate
+						>And when the server opens, we show up as one.</span
+					>
 				</p>
-				<p class="about-description">
+				<p class="about-description" translate>
 					Born from the Web Art Work community in Ukraine, our esports chapter brings the
 					same curiosity, teamwork, and commitment to a different kind of challenge.
 				</p>
 				<a routerLink="/media" class="text-link"
-					>See the crew in action <span aria-hidden="true">↗</span></a
+					><span translate>See the crew in action</span> <span aria-hidden="true">↗</span></a
 				>
 			</div>
 		</div>

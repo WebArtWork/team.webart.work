@@ -1,0 +1,52 @@
+<div lang="en">
+	<section class="market-hero relative overflow-hidden" aria-labelledby="market-hero-title">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">WEAR THE TAG</p>
+				<h1 id="market-hero-title">THE<br /><span>MARKET.</span></h1>
+				<p class="hero-description">
+					Jerseys, everyday wear, and gear for the desk.<br />Built for the crew, on and
+					off server.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="market-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<p class="eyebrow accent">DROP 01</p>
+				<h2 id="market-title">PRODUCTS</h2>
+			</div>
+			<p class="section-description">Store preview · Pricing shown for reference.</p>
+		</div>
+		<div class="grid gap-4 md:grid-cols-3">
+			@for (product of products; track product.id) {
+				<article class="product-card">
+					<span class="product-card-top"
+						><span>{{ product.category }}</span
+						><span class="product-card-status">COMING SOON</span></span
+					>
+					<span class="product-visual" aria-hidden="true">
+						<img src="brand-logo.svg" alt="" width="52" height="60" />
+					</span>
+					<span class="product-card-bottom"
+						><span
+							><strong>{{ product.name }}</strong
+							><small>{{ product.description }}</small></span
+						><span class="product-price">{{ product.price }}</span></span
+					>
+				</article>
+			}
+		</div>
+	</section>
+</div>

@@ -1,0 +1,128 @@
+:host {
+	display: block;
+}
+.market-hero {
+	background: #101112;
+	color: #fff;
+}
+.hero-image,
+.hero-shade {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.hero-shade {
+	background:
+		linear-gradient(90deg, rgba(10, 11, 12, 0.72), rgba(10, 11, 12, 0.12) 75%),
+		linear-gradient(0deg, #101112, transparent 35%);
+}
+.hero-copy {
+	padding: 90px 0 75px;
+}
+.market-hero h1 {
+	font: 900 clamp(4.5rem, 9.3vw, 8.5rem)/0.92 var(--ff-display);
+	letter-spacing: 0;
+	margin: 0;
+}
+.market-hero h1 span {
+	color: var(--c-primary);
+}
+.hero-description {
+	margin-top: 26px;
+	color: #ccc;
+	font-size: 17px;
+	line-height: 1.7;
+}
+.section-heading {
+	margin-bottom: 28px;
+}
+h2 {
+	font: 800 clamp(2rem, 4vw, 3.15rem)/1.06 var(--ff-display);
+	letter-spacing: 0;
+	margin: 10px 0 0;
+}
+.section-description {
+	color: var(--c-text-muted);
+	line-height: 1.6;
+}
+.product-card {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	border: 1px solid var(--c-border);
+	background: var(--c-bg-primary);
+	padding: 24px;
+	min-width: 0;
+	transition:
+		border-color 0.2s,
+		transform 0.2s;
+}
+.product-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--c-primary);
+}
+.product-card-top {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	font-size: 12px;
+	color: var(--c-text-muted);
+	letter-spacing: 0.04em;
+}
+.product-visual {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 46px 0;
+	background: var(--c-bg-secondary);
+	margin: 20px 0;
+}
+.product-visual img {
+	opacity: 0.65;
+}
+.product-card:hover .product-visual img {
+	opacity: 1;
+}
+.product-card-bottom {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+.product-card-bottom strong {
+	display: block;
+	font-size: 16px;
+}
+.product-card-bottom small {
+	display: block;
+	color: var(--c-text-muted);
+	font-size: 12px;
+	margin-top: 6px;
+	line-height: 1.6;
+}
+.product-price {
+	font: 700 18px/1 var(--ff-display);
+	color: var(--c-primary);
+	white-space: nowrap;
+}
+@media (max-width: 640px) {
+	.hero-copy {
+		padding: 70px 0 55px;
+	}
+	.hero-image {
+		object-position: 62% center;
+	}
+	.hero-shade {
+		background:
+			linear-gradient(90deg, rgba(10, 11, 12, 0.85), rgba(10, 11, 12, 0.3)),
+			linear-gradient(0deg, #101112, transparent);
+	}
+	.market-hero h1 {
+		font-size: clamp(3.9rem, 16vw, 6rem);
+	}
+	.hero-description {
+		font-size: 15px;
+	}
+}

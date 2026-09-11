@@ -1,0 +1,91 @@
+<div lang="en">
+	<section class="teams-hero relative overflow-hidden" aria-labelledby="teams-hero-title">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">DIFFERENT GAMES. SAME DNA.</p>
+				<h1 id="teams-hero-title">OUR<br /><span>TEAMS.</span></h1>
+				<p class="hero-description">
+					A shared ambition. A whole new playing field.<br />Three rosters, one tag on
+					their chest.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="roster-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<p class="eyebrow accent">THE LINEUP</p>
+				<h2 id="roster-title">THE ROSTERS</h2>
+			</div>
+			<p class="section-description">Meet the squads carrying the Web Art Work tag.</p>
+		</div>
+
+		<div class="teams-list">
+			@for (team of teams; track team.id) {
+				<article class="team-block">
+					<a class="game-card" [routerLink]="team.path">
+						<span class="game-card-top"
+							><span>WAW / {{ team.number }}</span
+							><span class="game-card-status">ROSTER PREVIEW</span></span
+						>
+						<span class="game-word" [class.compact]="team.id === 'BRAWL STARS'">{{
+							team.id
+						}}</span>
+						<span class="game-card-bottom"
+							><span
+								><strong>{{ team.name }}</strong
+								><small>{{ team.genre }}</small></span
+							><span class="game-arrow" aria-hidden="true">↗</span></span
+						>
+					</a>
+					<div class="roster-preview">
+						<div>
+							<p class="eyebrow">ABOUT THE TEAM</p>
+							<p>{{ team.description }}</p>
+						</div>
+						<div class="roster-roles">
+							@for (role of team.roles; track role) {
+								<span
+									>{{ role }}
+									<small>TBA</small></span
+								>
+							}
+						</div>
+					</div>
+				</article>
+			}
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="shell grid items-center gap-10 md:grid-cols-[1fr_1.2fr]">
+			<div>
+				<p class="eyebrow">THIS IS WEB ART WORK</p>
+				<h2>CREATIVE MINDS.<br />COMPETITIVE<br /><span>HEARTS.</span></h2>
+			</div>
+			<div class="about-copy">
+				<p>
+					We build things. We push each other.<br />And when the server opens, we show up
+					as one.
+				</p>
+				<p class="about-description">
+					Born from the Web Art Work community in Ukraine, our esports chapter brings the
+					same curiosity, teamwork, and commitment to a different kind of challenge.
+				</p>
+				<a routerLink="/media" class="text-link"
+					>See the crew in action <span aria-hidden="true">↗</span></a
+				>
+			</div>
+		</div>
+	</section>
+</div>

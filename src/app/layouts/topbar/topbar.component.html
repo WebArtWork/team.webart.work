@@ -7,9 +7,9 @@
 			></a
 		>
 		<nav class="desktop-nav" aria-label="Main navigation">
-			<a routerLink="/teams">Teams</a><a routerLink="/matches">Matches</a
-			><a routerLink="/news">News</a><a routerLink="/market">Market</a
-			><a routerLink="/media">Media</a><a routerLink="/tournaments">Tournaments</a>
+			<a routerLink="/news">News</a><a routerLink="/games">Games</a
+			><a routerLink="/tournaments">Tournaments</a><a routerLink="/teams">Teams</a
+			><a routerLink="/media">Media</a><a routerLink="/market">Market</a>
 		</nav>
 		<div class="header-actions">
 			<div class="language-switcher">
@@ -62,12 +62,12 @@
 	</div>
 	@if (mobileMenuOpen()) {
 		<nav id="mobile-nav" class="mobile-nav shell" aria-label="Mobile navigation">
-			<a routerLink="/teams" (click)="mobileMenuOpen.set(false)">Teams</a
-			><a routerLink="/matches" (click)="mobileMenuOpen.set(false)">Matches</a
-			><a routerLink="/news" (click)="mobileMenuOpen.set(false)">News</a
-			><a routerLink="/market" (click)="mobileMenuOpen.set(false)">Market</a
+			<a routerLink="/news" (click)="mobileMenuOpen.set(false)">News</a
+			><a routerLink="/games" (click)="mobileMenuOpen.set(false)">Games</a
+			><a routerLink="/tournaments" (click)="mobileMenuOpen.set(false)">Tournaments</a
+			><a routerLink="/teams" (click)="mobileMenuOpen.set(false)">Teams</a
 			><a routerLink="/media" (click)="mobileMenuOpen.set(false)">Media</a
-			><a routerLink="/tournaments" (click)="mobileMenuOpen.set(false)">Tournaments</a>
+			><a routerLink="/market" (click)="mobileMenuOpen.set(false)">Market</a>
 		</nav>
 	}
 </header>
