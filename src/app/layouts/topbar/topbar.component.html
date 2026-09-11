@@ -8,9 +8,39 @@
 		>
 		<nav class="desktop-nav" aria-label="Main navigation">
 			<a routerLink="/teams">Teams</a><a routerLink="/matches">Matches</a
-			><a routerLink="/news">News</a><a routerLink="/about">About us</a>
+			><a routerLink="/news">News</a><a routerLink="/market">Market</a
+			><a routerLink="/media">Media</a><a routerLink="/tournaments">Tournaments</a>
 		</nav>
 		<div class="header-actions">
+			<div class="language-switcher">
+				<button
+					class="language-button"
+					aria-haspopup="true"
+					[attr.aria-expanded]="languageMenuOpen()"
+					aria-label="Open language menu"
+					(click)="languageMenuOpen.set(!languageMenuOpen())"
+					type="button"
+				>
+					{{ currentLanguage()?.code?.toUpperCase() }}
+				</button>
+				@if (languageMenuOpen()) {
+					<ul class="language-menu" role="menu">
+						@for (lang of languages(); track lang.code) {
+							<li role="none">
+								<button
+									role="menuitem"
+									type="button"
+									[attr.aria-label]="'Switch language to ' + lang.name"
+									[class.active]="lang.code === currentLanguage()?.code"
+									(click)="setLanguage(lang.code)"
+								>
+									{{ lang.nativeName || lang.name }}
+								</button>
+							</li>
+						}
+					</ul>
+				}
+			</div>
 			<button
 				class="theme-button"
 				[attr.aria-label]="toggleLabel()"
@@ -19,9 +49,6 @@
 			>
 				<span aria-hidden="true">{{ mode() === 'dark' ? '☀' : '☾' }}</span>
 			</button>
-			<a class="community-link" routerLink="/community"
-				>WAW COMMUNITY <span aria-hidden="true">↗</span></a
-			>
 			<button
 				class="mobile-menu-button"
 				type="button"
@@ -38,8 +65,9 @@
 			<a routerLink="/teams" (click)="mobileMenuOpen.set(false)">Teams</a
 			><a routerLink="/matches" (click)="mobileMenuOpen.set(false)">Matches</a
 			><a routerLink="/news" (click)="mobileMenuOpen.set(false)">News</a
-			><a routerLink="/about" (click)="mobileMenuOpen.set(false)">About us</a
-			><a routerLink="/community" (click)="mobileMenuOpen.set(false)">WAW Community ↗</a>
+			><a routerLink="/market" (click)="mobileMenuOpen.set(false)">Market</a
+			><a routerLink="/media" (click)="mobileMenuOpen.set(false)">Media</a
+			><a routerLink="/tournaments" (click)="mobileMenuOpen.set(false)">Tournaments</a>
 		</nav>
 	}
 </header>

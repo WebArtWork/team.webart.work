@@ -12,8 +12,9 @@ const pages = [
 	{ path: 'news/a-new-arena', title: 'A new arena. The same Web Art Work spirit.' },
 	{ path: 'news/one-way-forward', title: 'Different roles. One way forward.' },
 	{ path: 'news/our-community', title: 'For the people on both sides of the screen.' },
-	{ path: 'about', title: 'About us' },
-	{ path: 'community', title: 'WAW Community' },
+	{ path: 'market', title: 'Market' },
+	{ path: 'media', title: 'Media' },
+	{ path: 'tournaments', title: 'Tournaments' },
 ];
 
 export const routes: Routes = [
