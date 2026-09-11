@@ -2,14 +2,25 @@ import { Routes } from '@angular/router';
 import { buildRouteMeta } from '@wawjs/ngx-default';
 import { companyProfile } from './feature/company/company.data';
 
-const pages = [
-	{ path: 'teams/chess', title: 'Chess' },
-	{ path: 'teams/cs2', title: 'Counter-Strike 2' },
-	{ path: 'teams/brawl-stars', title: 'Brawl Stars' },
-	{ path: 'games', title: 'Games' },
-	{ path: 'news/a-new-arena', title: 'A new arena. The same Web Art Work spirit.' },
-	{ path: 'news/one-way-forward', title: 'Different roles. One way forward.' },
-	{ path: 'news/our-community', title: 'For the people on both sides of the screen.' },
+const games = [
+	{ slug: 'chess', title: 'Chess' },
+	{ slug: 'cs2', title: 'Counter-Strike 2' },
+	{ slug: 'brawl-stars', title: 'Brawl Stars' },
+];
+
+const articles = [
+	{ slug: 'a-new-arena', title: 'A new arena. The same Web Art Work spirit.' },
+	{ slug: 'one-way-forward', title: 'Different roles. One way forward.' },
+	{ slug: 'our-community', title: 'For the people on both sides of the screen.' },
+];
+
+const tournaments = [
+	{ slug: 'chess-cup', title: 'Community Chess Cup' },
+	{ slug: 'cs2-series', title: 'Community Series' },
+	{ slug: 'brawl-cup', title: 'Brawl Community Cup' },
+	{ slug: 'chess-cup-08', title: 'Community Chess Cup' },
+	{ slug: 'cs2-series-06', title: 'Community Series' },
+	{ slug: 'brawl-cup-04', title: 'Brawl Community Cup' },
 ];
 
 export const routes: Routes = [
@@ -75,6 +86,19 @@ export const routes: Routes = [
 			import('./pages/market/market.component').then((m) => m.MarketComponent),
 	},
 	{
+		path: 'cart',
+		pathMatch: 'full',
+		data: {
+			pageTitle: 'Cart',
+			meta: {
+				...buildRouteMeta(companyProfile, '/cart'),
+				title: 'Cart',
+				robots: 'noindex, nofollow',
+			},
+		},
+		loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent),
+	},
+	{
 		path: 'media',
 		pathMatch: 'full',
 		data: {
@@ -103,19 +127,62 @@ export const routes: Routes = [
 				(m) => m.TournamentsComponent,
 			),
 	},
-	...pages.map((page) => ({
-		path: page.path,
+	{
+		path: 'games',
+		pathMatch: 'full',
+		data: {
+			pageTitle: 'Games',
+			meta: {
+				...buildRouteMeta(companyProfile, '/games'),
+				title: 'Games',
+				robots: 'noindex, follow',
+			},
+		},
+		loadComponent: () => import('./pages/games/games.component').then((m) => m.GamesComponent),
+	},
+	...articles.map((article) => ({
+		path: `news/${article.slug}`,
 		pathMatch: 'full' as const,
 		data: {
-			pageTitle: page.title,
+			slug: article.slug,
+			pageTitle: article.title,
 			meta: {
-				...buildRouteMeta(companyProfile, `/${page.path}`),
-				title: page.title,
+				...buildRouteMeta(companyProfile, `/news/${article.slug}`),
+				title: article.title,
 				robots: 'noindex, follow',
 			},
 		},
 		loadComponent: () =>
-			import('./pages/placeholder/placeholder.component').then((m) => m.PlaceholderComponent),
+			import('./pages/article/article.component').then((m) => m.ArticleComponent),
+	})),
+	...tournaments.map((tournament) => ({
+		path: `tournaments/${tournament.slug}`,
+		pathMatch: 'full' as const,
+		data: {
+			slug: tournament.slug,
+			pageTitle: tournament.title,
+			meta: {
+				...buildRouteMeta(companyProfile, `/tournaments/${tournament.slug}`),
+				title: tournament.title,
+				robots: 'noindex, follow',
+			},
+		},
+		loadComponent: () =>
+			import('./pages/tournament/tournament.component').then((m) => m.TournamentComponent),
+	})),
+	...games.map((game) => ({
+		path: `teams/${game.slug}`,
+		pathMatch: 'full' as const,
+		data: {
+			slug: game.slug,
+			pageTitle: game.title,
+			meta: {
+				...buildRouteMeta(companyProfile, `/teams/${game.slug}`),
+				title: game.title,
+				robots: 'noindex, follow',
+			},
+		},
+		loadComponent: () => import('./pages/game/game.component').then((m) => m.GameComponent),
 	})),
 	{ path: '**', redirectTo: '' },
 ];

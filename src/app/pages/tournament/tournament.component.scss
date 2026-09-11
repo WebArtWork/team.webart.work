@@ -1,0 +1,158 @@
+:host {
+	display: block;
+}
+.tournament-hero {
+	background: #101112;
+	color: #fff;
+}
+.hero-image,
+.hero-shade {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.hero-shade {
+	background:
+		linear-gradient(90deg, rgba(10, 11, 12, 0.72), rgba(10, 11, 12, 0.12) 75%),
+		linear-gradient(0deg, #101112, transparent 35%);
+}
+.back-link {
+	display: inline-block;
+	padding-top: 26px;
+	font-size: 13px;
+	color: #b9b9b9;
+}
+.hero-copy {
+	padding: 40px 0 60px;
+}
+h1 {
+	font: 800 clamp(2.2rem, 5vw, 4rem)/1.1 var(--ff-display);
+	letter-spacing: 0;
+	margin: 8px 0 18px;
+}
+.status-badge {
+	display: inline-block;
+	padding: 6px 12px;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	font-weight: 700;
+	background: var(--c-primary);
+	color: #111;
+}
+.status-badge.completed {
+	background: transparent;
+	border: 1px solid #555;
+	color: #ccc;
+}
+.stat-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 20px;
+	padding-bottom: 32px;
+	border-bottom: 1px solid var(--c-border);
+	margin-bottom: 32px;
+}
+.stat strong {
+	display: block;
+	margin-top: 8px;
+	font-size: 15px;
+	font-weight: 650;
+}
+.description {
+	font-size: 15px;
+	line-height: 1.8;
+	color: var(--c-text-muted);
+	max-width: 720px;
+	margin-bottom: 44px;
+}
+h2 {
+	font: 800 1.3rem/1.2 var(--ff-display);
+	letter-spacing: 0;
+	margin: 0 0 20px;
+}
+.tournament-columns {
+	display: grid;
+	grid-template-columns: 1.6fr 1fr;
+	gap: 50px;
+}
+.matches-list {
+	display: flex;
+	flex-direction: column;
+}
+.match-row {
+	display: grid;
+	grid-template-columns: 110px 1fr 120px;
+	align-items: center;
+	gap: 16px;
+	padding: 18px 0;
+	border-top: 1px solid var(--c-border);
+}
+.match-row:last-child {
+	border-bottom: 1px solid var(--c-border);
+}
+.match-stage {
+	font-size: 12px;
+	color: var(--c-text-muted);
+}
+.match-teams {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	font-size: 14px;
+	font-weight: 650;
+}
+.versus {
+	font-size: 12px;
+	font-weight: 400;
+	color: var(--c-text-muted);
+}
+.match-date {
+	font-size: 12px;
+	color: var(--c-text-muted);
+	text-align: right;
+}
+.participants-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.participants-list li {
+	padding: 12px 14px;
+	font-size: 14px;
+	background: var(--c-bg-secondary);
+	border: 1px solid var(--c-border);
+	margin-bottom: -1px;
+}
+.participants-list li.us {
+	font-weight: 700;
+	color: var(--c-primary);
+	border-color: var(--c-primary);
+}
+@media (max-width: 1000px) {
+	.stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.tournament-columns {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+}
+@media (max-width: 640px) {
+	.hero-copy {
+		padding: 30px 0 45px;
+	}
+	.match-row {
+		grid-template-columns: 1fr;
+		gap: 6px;
+		text-align: center;
+	}
+	.match-date {
+		text-align: center;
+	}
+}

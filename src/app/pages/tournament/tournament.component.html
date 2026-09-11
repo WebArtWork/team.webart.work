@@ -1,0 +1,83 @@
+<div lang="en">
+	<section class="tournament-hero relative overflow-hidden">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<a class="back-link" routerLink="/tournaments">← Back to tournaments</a>
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-3">{{ tournament.game }}</p>
+				<h1>{{ tournament.name }}</h1>
+				<span class="status-badge" [class.completed]="tournament.status === 'COMPLETED'">{{
+					tournament.status
+				}}</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space">
+		<div class="stat-grid">
+			<div class="stat">
+				<p class="eyebrow">DATES</p>
+				<strong>{{ tournament.dates }}</strong>
+			</div>
+			<div class="stat">
+				<p class="eyebrow">FORMAT</p>
+				<strong>{{ tournament.format }}</strong>
+			</div>
+			<div class="stat">
+				<p class="eyebrow">PRIZE POOL</p>
+				<strong>{{ tournament.prizePool }}</strong>
+			</div>
+			<div class="stat">
+				<p class="eyebrow">LOCATION</p>
+				<strong>{{ tournament.location }}</strong>
+			</div>
+			@if (tournament.placement) {
+				<div class="stat">
+					<p class="eyebrow">WAW RESULT</p>
+					<strong class="accent">{{ tournament.placement }}</strong>
+				</div>
+			}
+		</div>
+
+		<p class="description">{{ tournament.description }}</p>
+
+		<div class="tournament-columns">
+			<div>
+				<h2>MATCHES</h2>
+				<div class="matches-list">
+					@for (match of tournament.matches; track match.date + match.teamB) {
+						<article class="match-row">
+							<span class="match-stage">{{ match.stage }}</span>
+							<div class="match-teams">
+								<span class="team-name">{{ match.teamA }}</span
+								>@if (match.score) {
+									<strong class="accent">{{ match.score }}</strong>
+								} @else {
+									<span class="versus">VS</span>
+								}
+								<span class="team-name">{{ match.teamB }}</span>
+							</div>
+							<span class="match-date">{{ match.date }}</span>
+						</article>
+					}
+				</div>
+			</div>
+			<div>
+				<h2>PARTICIPANTS</h2>
+				<ul class="participants-list">
+					@for (team of tournament.participants; track team) {
+						<li [class.us]="team === 'WAW'">{{ team }}</li>
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+</div>

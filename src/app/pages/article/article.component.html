@@ -1,0 +1,33 @@
+<div lang="en">
+	<article class="shell section-space article-shell">
+		<a class="back-link" routerLink="/news">← Back to news</a>
+		<p class="news-meta">
+			{{ article.meta }} <span>{{ article.metaLabel }}</span>
+		</p>
+		<h1>{{ article.title }}</h1>
+
+		<div class="article-visual" [class]="'news-' + article.visual">
+			@if (article.visual === 'photo') {
+				<img
+					src="esports-hero.png"
+					alt="A team preparing together in an esports arena"
+					width="1774"
+					height="887"
+				/><span class="news-tag">{{ article.tag }}</span>
+			} @else if (article.visual === 'type') {
+				<span class="news-tag">{{ article.tag }}</span
+				><span>ONE TAG.<br /><em>ALL IN.</em></span
+				><img src="brand-logo.svg" alt="" width="100" height="116" />
+			} @else {
+				<span class="news-tag">{{ article.tag }}</span
+				><span class="community-word">PLAY.<br />CREATE.<br /><em>REPEAT.</em></span>
+			}
+		</div>
+
+		<div class="article-body">
+			@for (paragraph of article.paragraphs; track paragraph) {
+				<p>{{ paragraph }}</p>
+			}
+		</div>
+	</article>
+</div>

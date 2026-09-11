@@ -27,14 +27,22 @@
 				<p class="eyebrow accent">DROP 01</p>
 				<h2 id="market-title">PRODUCTS</h2>
 			</div>
-			<p class="section-description">Store preview · Pricing shown for reference.</p>
+			<div class="flex items-end gap-5">
+				<p class="section-description">Store preview · Pricing shown for reference.</p>
+				<a class="cart-link" routerLink="/cart"
+					>Cart
+					@if (cartCount() > 0) {
+						<span class="cart-count">{{ cartCount() }}</span>
+					}</a
+				>
+			</div>
 		</div>
 		<div class="grid gap-4 md:grid-cols-3">
 			@for (product of products; track product.id) {
 				<article class="product-card">
 					<span class="product-card-top"
 						><span>{{ product.category }}</span
-						><span class="product-card-status">COMING SOON</span></span
+						><span class="product-price">€{{ product.price }}</span></span
 					>
 					<span class="product-visual" aria-hidden="true">
 						<img src="brand-logo.svg" alt="" width="52" height="60" />
@@ -43,8 +51,16 @@
 						><span
 							><strong>{{ product.name }}</strong
 							><small>{{ product.description }}</small></span
-						><span class="product-price">{{ product.price }}</span></span
+						></span
 					>
+					<button
+						type="button"
+						class="add-to-cart"
+						[class.added]="justAdded() === product.id"
+						(click)="addToCart(product)"
+					>
+						{{ justAdded() === product.id ? 'Added ✓' : 'Add to cart' }}
+					</button>
 				</article>
 			}
 		</div>

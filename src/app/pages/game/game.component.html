@@ -1,0 +1,204 @@
+<div lang="en">
+	<section class="game-hero relative overflow-hidden" aria-labelledby="game-hero-title">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">WAW / {{ game.number }} · {{ game.genre }}</p>
+				<h1 id="game-hero-title">{{ game.name }}</h1>
+				<p class="hero-description">{{ game.description }}</p>
+				<p class="hero-format">{{ game.format }}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="roster-title">
+		<div class="section-heading">
+			<p class="eyebrow accent">THE LINEUP</p>
+			<h2 id="roster-title">TEAM</h2>
+		</div>
+		<div class="roster-list">
+			@for (member of game.roster; track member.gamertag) {
+				<article class="roster-row" [class.staff]="member.staff">
+					<span class="roster-avatar" aria-hidden="true">{{ member.gamertag[0] }}</span>
+					<div class="roster-identity">
+						<strong>{{ member.gamertag }}</strong>
+						<span class="roster-role"
+							>{{ member.role }}
+							@if (member.staff) {
+								<span class="roster-staff-tag">STAFF</span>
+							}</span
+						>
+					</div>
+					<span class="roster-country">{{ member.country }}</span>
+					<span class="roster-joined"
+						>JOINED<strong>{{ member.joined }}</strong></span
+					>
+					<p class="roster-note">{{ member.note }}</p>
+				</article>
+			}
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="games-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<p class="eyebrow accent">IN THE SERVER</p>
+			<h2 id="games-title">GAMES</h2>
+		</div>
+		@if (fixtures.length || results.length) {
+			<div class="match-list">
+				@for (match of fixtures; track match.event) {
+					<article class="match-row">
+						<div class="match-date">
+							<strong>{{ match.date }}</strong
+							><span>{{ match.time }}</span>
+						</div>
+						<div class="match-teams">
+							<span class="team-name">WAW</span
+							><span class="versus">VS</span
+							><span class="team-name"
+								><span class="opponent-badge">{{ match.badge }}</span
+								>{{ match.opponent }}</span
+							>
+						</div>
+						<div class="match-event">
+							{{ match.event }}<span>{{ match.format }} · Online</span>
+						</div>
+						<span class="scheduled">SCHEDULED</span>
+					</article>
+				}
+				@for (match of results; track match.event) {
+					<article class="match-row">
+						<div class="match-date">
+							<strong>{{ match.date }}</strong
+							><span>FINAL</span>
+						</div>
+						<div class="match-teams">
+							<span class="team-name">WAW</span
+							><strong class="accent">{{ match.score }}</strong
+							><span class="team-name"
+								><span class="opponent-badge">{{ match.badge }}</span
+								>{{ match.opponent }}</span
+							>
+						</div>
+						<div class="match-event">
+							{{ match.event }}<span>{{ match.format }} · Online</span>
+						</div>
+						<span class="scheduled accent">VICTORY</span>
+					</article>
+				}
+			</div>
+		} @else {
+			<p class="empty-note">No games scheduled for {{ game.name }} yet.</p>
+		}
+		<a class="text-link" routerLink="/matches">See all games <span aria-hidden="true">↗</span></a>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="tournaments-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<p class="eyebrow accent">SEASON 2026</p>
+			<h2 id="tournaments-title">TOURNAMENTS</h2>
+		</div>
+		@if (tournamentsUpcoming.length || tournamentsPast.length) {
+			<div class="tournament-list">
+				@for (item of tournamentsUpcoming; track item.id) {
+					<article class="tournament-row">
+						<div class="tournament-info">
+							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
+						</div>
+						<span class="tournament-dates">{{ item.dates }}</span>
+						<span class="tournament-status">{{ item.status }}</span>
+					</article>
+				}
+				@for (item of tournamentsPast; track item.id) {
+					<article class="tournament-row">
+						<div class="tournament-info">
+							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
+						</div>
+						<span class="tournament-dates">{{ item.dates }}</span>
+						<span class="tournament-status accent">{{ item.placement }}</span>
+					</article>
+				}
+			</div>
+		} @else {
+			<p class="empty-note">No tournaments scheduled for {{ game.name }} yet.</p>
+		}
+		<a class="text-link" routerLink="/tournaments"
+			>See all tournaments <span aria-hidden="true">↗</span></a
+		>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="media-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<p class="eyebrow accent">SEE THE CREW IN ACTION</p>
+			<h2 id="media-title">MEDIA</h2>
+		</div>
+		@if (photos.length || videos.length || streams.length) {
+			<div class="gallery-grid grid gap-4 md:grid-cols-3">
+				@for (item of photos; track item.id) {
+					<figure class="gallery-card">
+						<img
+							src="esports-hero.png"
+							alt="{{ item.caption }}"
+							width="1774"
+							height="887"
+							loading="lazy"
+						/><span class="gallery-tag">{{ item.tag }}</span>
+						<figcaption>{{ item.caption }}</figcaption>
+					</figure>
+				}
+			</div>
+			<div class="video-list">
+				@for (reel of videos; track reel.id) {
+					<article class="video-row">
+						<span class="video-play" aria-hidden="true">▶</span>
+						<span class="video-tag">{{ reel.tag }}</span>
+						<span class="video-title">{{ reel.title }}</span>
+						<span class="video-length">{{ reel.length }}</span>
+					</article>
+				}
+			</div>
+			<div class="stream-list">
+				@for (stream of streams; track stream.id) {
+					<article class="stream-row">
+						<span class="stream-status" [class.replay]="stream.status === 'REPLAY'">{{
+							stream.status
+						}}</span>
+						<span class="stream-title">{{ stream.title }}</span>
+						<span class="stream-schedule">{{ stream.schedule }}</span>
+						<span class="stream-channel">{{ stream.channel }}</span>
+					</article>
+				}
+			</div>
+		} @else {
+			<p class="empty-note">No media for {{ game.name }} yet.</p>
+		}
+		<a class="text-link" routerLink="/media">See all media <span aria-hidden="true">↗</span></a>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="news-title">
+		<div class="section-heading">
+			<p class="eyebrow accent">BEHIND THE TAG</p>
+			<h2 id="news-title">NEWS</h2>
+		</div>
+		<div class="news-grid grid gap-5 md:grid-cols-3">
+			@for (article of news; track article.slug) {
+				<article class="news-card">
+					<p class="news-meta">{{ article.tag }} <span>{{ article.meta }}</span></p>
+					<h3>{{ article.title }}</h3>
+					<a class="story-link" [routerLink]="'/news/' + article.slug"
+						>Read the story <span aria-hidden="true">↗</span></a
+					>
+				</article>
+			}
+		</div>
+		<a class="text-link" routerLink="/news">See all news <span aria-hidden="true">↗</span></a>
+	</section>
+</div>

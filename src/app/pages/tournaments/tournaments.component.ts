@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
+	imports: [RouterLink],
 	templateUrl: './tournaments.component.html',
 	styleUrl: './tournaments.component.scss',
 })

@@ -1,0 +1,181 @@
+<div lang="en">
+	<section class="cart-hero relative overflow-hidden">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-3">YOUR ORDER</p>
+				<h1>
+					@if (step() === 'completed') {
+						ORDER<br /><span>PLACED.</span>
+					} @else {
+						YOUR<br /><span>CART.</span>
+					}
+				</h1>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space cart-section">
+		@if (step() === 'completed') {
+			<div class="completed-panel">
+				<span class="completed-check" aria-hidden="true">✓</span>
+				<h2>Thanks — your order is in.</h2>
+				<p class="order-number">Order <strong>{{ orderNumber() }}</strong></p>
+				<p class="completed-copy">
+					We’ve logged your order and will reach out by email to confirm shipping. This is
+					a store preview, so no payment has been taken.
+				</p>
+				<div class="completed-actions">
+					<a class="button-primary" routerLink="/market"
+						>Back to market <span aria-hidden="true">↗</span></a
+					>
+					<button type="button" class="text-link-btn" (click)="startNewOrder()">
+						Start a new order
+					</button>
+				</div>
+			</div>
+		} @else if (items().length === 0) {
+			<div class="empty-panel">
+				<p class="eyebrow accent">CART EMPTY</p>
+				<h2>Nothing here yet.</h2>
+				<p class="empty-copy">Add some gear from the market to get started.</p>
+				<a class="button-primary" routerLink="/market"
+					>Go to market <span aria-hidden="true">↗</span></a
+				>
+			</div>
+		} @else if (step() === 'review') {
+			<div class="cart-layout">
+				<div class="cart-items">
+					<div class="section-heading">
+						<p class="eyebrow accent">{{ count() }} ITEM(S)</p>
+						<h2>REVIEW YOUR ITEMS</h2>
+					</div>
+					@for (item of items(); track item.id) {
+						<article class="cart-row">
+							<span class="item-name">{{ item.name }}</span>
+							<div class="qty-control">
+								<button
+									type="button"
+									aria-label="Decrease quantity"
+									(click)="setQty(item.id, item.qty - 1)"
+								>
+									−
+								</button>
+								<span>{{ item.qty }}</span>
+								<button
+									type="button"
+									aria-label="Increase quantity"
+									(click)="setQty(item.id, item.qty + 1)"
+								>
+									+
+								</button>
+							</div>
+							<span class="item-price">€{{ item.price * item.qty }}</span>
+							<button
+								type="button"
+								class="remove-btn"
+								aria-label="Remove item"
+								(click)="remove(item.id)"
+							>
+								✕
+							</button>
+						</article>
+					}
+				</div>
+				<aside class="cart-summary">
+					<p class="eyebrow">SUBTOTAL</p>
+					<strong class="summary-total">€{{ subtotal() }}</strong>
+					<p class="summary-note">Shipping and payment collected after confirmation.</p>
+					<button type="button" class="button-primary full" (click)="goToCheckout()">
+						Checkout <span aria-hidden="true">↗</span>
+					</button>
+				</aside>
+			</div>
+		} @else {
+			<div class="cart-layout">
+				<form class="checkout-form" #checkoutForm="ngForm" (ngSubmit)="placeOrder()">
+					<div class="section-heading">
+						<p class="eyebrow accent">STEP 2</p>
+						<h2>YOUR INFO</h2>
+					</div>
+					<div class="field-grid">
+						<label
+							>Full name
+							<input
+								name="fullName"
+								type="text"
+								required
+								[(ngModel)]="form.fullName"
+							/>
+						</label>
+						<label
+							>Email
+							<input name="email" type="email" required [(ngModel)]="form.email" />
+						</label>
+						<label
+							>Phone
+							<input name="phone" type="tel" required [(ngModel)]="form.phone" />
+						</label>
+						<label
+							>City
+							<input name="city" type="text" required [(ngModel)]="form.city" />
+						</label>
+						<label class="field-wide"
+							>Address
+							<input
+								name="address"
+								type="text"
+								required
+								[(ngModel)]="form.address"
+							/>
+						</label>
+						<label
+							>Postal code
+							<input
+								name="postalCode"
+								type="text"
+								required
+								[(ngModel)]="form.postalCode"
+							/>
+						</label>
+						<label class="field-wide"
+							>Order notes (optional)
+							<textarea name="notes" rows="3" [(ngModel)]="form.notes"></textarea>
+						</label>
+					</div>
+					<div class="checkout-actions">
+						<button type="button" class="text-link-btn" (click)="backToReview()">
+							← Back to cart
+						</button>
+						<button
+							type="submit"
+							class="button-primary"
+							[disabled]="checkoutForm.invalid"
+						>
+							Place order <span aria-hidden="true">↗</span>
+						</button>
+					</div>
+				</form>
+				<aside class="cart-summary">
+					<p class="eyebrow">ORDER SUMMARY</p>
+					@for (item of items(); track item.id) {
+						<div class="summary-line">
+							<span>{{ item.name }} × {{ item.qty }}</span
+							><span>€{{ item.price * item.qty }}</span>
+						</div>
+					}
+					<p class="eyebrow mt-4">SUBTOTAL</p>
+					<strong class="summary-total">€{{ subtotal() }}</strong>
+				</aside>
+			</div>
+		}
+	</section>
+</div>

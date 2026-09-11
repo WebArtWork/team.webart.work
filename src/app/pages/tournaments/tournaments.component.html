@@ -53,25 +53,25 @@
 		<div class="tournament-list" aria-live="polite">
 			@if (tournamentView() === 'upcoming') {
 				@for (item of upcoming; track item.id) {
-					<article class="tournament-row">
+					<a class="tournament-row" [routerLink]="['/tournaments', item.id]">
 						<span class="game-label">{{ item.game }}</span>
 						<div class="tournament-info">
 							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
 						</div>
 						<span class="tournament-dates">{{ item.dates }}</span>
 						<span class="tournament-status">{{ item.status }}</span>
-					</article>
+					</a>
 				}
 			} @else {
 				@for (item of past; track item.id) {
-					<article class="tournament-row">
+					<a class="tournament-row" [routerLink]="['/tournaments', item.id]">
 						<span class="game-label">{{ item.game }}</span>
 						<div class="tournament-info">
 							<strong>{{ item.name }}</strong><span>{{ item.format }}</span>
 						</div>
 						<span class="tournament-dates">{{ item.dates }}</span>
 						<span class="tournament-status accent">{{ item.placement }}</span>
-					</article>
+					</a>
 				}
 			}
 		</div>

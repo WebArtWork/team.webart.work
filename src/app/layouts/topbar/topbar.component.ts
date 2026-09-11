@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '@wawjs/ngx-translate';
 import { ThemeService } from '@wawjs/ngx-ui';
+import { CartService } from '../../feature/cart/cart.service';
 
 @Component({
 	selector: 'app-topbar',
@@ -12,6 +13,8 @@ import { ThemeService } from '@wawjs/ngx-ui';
 export class TopbarComponent {
 	private readonly _themeService = inject(ThemeService);
 	private readonly _languageService = inject(LanguageService);
+	private readonly _cart = inject(CartService);
+	protected readonly cartCount = this._cart.count;
 	protected readonly mode = computed(() => this._themeService.mode() ?? 'dark');
 	protected readonly mobileMenuOpen = signal(false);
 	protected readonly languageMenuOpen = signal(false);

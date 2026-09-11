@@ -1,0 +1,65 @@
+<div lang="en">
+	<section class="games-hero relative overflow-hidden" aria-labelledby="games-hero-title">
+		<img
+			class="hero-image"
+			src="esports-hero.png"
+			alt="Esports players at their PCs in a yellow-lit arena"
+			width="1774"
+			height="887"
+			fetchpriority="high"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="shell relative z-10">
+			<div class="hero-copy">
+				<p class="eyebrow accent mb-5">WHERE WE PLAY</p>
+				<h1 id="games-hero-title">OUR<br /><span>GAMES.</span></h1>
+				<p class="hero-description">
+					Different boards, different servers.<br />One Web Art Work approach to
+					competing.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="shell section-space" aria-labelledby="games-title">
+		<div class="section-heading flex flex-wrap items-end justify-between gap-5">
+			<div>
+				<p class="eyebrow accent">DIFFERENT GAMES. SAME DNA.</p>
+				<h2 id="games-title">DISCIPLINES</h2>
+			</div>
+			<p class="section-description">Three games. Three ways to compete.</p>
+		</div>
+
+		<div class="games-list">
+			@for (game of games; track game.id) {
+				<article class="game-block">
+					<a class="game-card" [routerLink]="game.path">
+						<span class="game-card-top"
+							><span>WAW / {{ game.number }}</span
+							><span class="game-card-status">ROSTER PREVIEW</span></span
+						>
+						<span class="game-word" [class.compact]="game.id === 'BRAWL STARS'">{{
+							game.id
+						}}</span>
+						<span class="game-card-bottom"
+							><span
+								><strong>{{ game.name }}</strong
+								><small>{{ game.genre }}</small></span
+							><span class="game-arrow" aria-hidden="true">↗</span></span
+						>
+					</a>
+					<div class="game-details">
+						<div>
+							<p class="eyebrow">ABOUT THE GAME</p>
+							<p>{{ game.description }}</p>
+						</div>
+						<div class="game-format">
+							<p class="eyebrow">FORMAT</p>
+							<p>{{ game.format }}</p>
+						</div>
+					</div>
+				</article>
+			}
+		</div>
+	</section>
+</div>

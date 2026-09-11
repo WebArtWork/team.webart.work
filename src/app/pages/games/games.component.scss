@@ -1,7 +1,7 @@
 :host {
 	display: block;
 }
-.market-hero {
+.games-hero {
 	background: #101112;
 	color: #fff;
 }
@@ -21,12 +21,12 @@
 .hero-copy {
 	padding: 90px 0 75px;
 }
-.market-hero h1 {
+.games-hero h1 {
 	font: 900 clamp(4.5rem, 9.3vw, 8.5rem)/0.92 var(--ff-display);
 	letter-spacing: 0;
 	margin: 0;
 }
-.market-hero h1 span {
+.games-hero h1 span {
 	color: var(--c-primary);
 }
 .hero-description {
@@ -47,44 +47,30 @@ h2 {
 	color: var(--c-text-muted);
 	line-height: 1.6;
 }
-.cart-link {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 0.06em;
-	white-space: nowrap;
+.games-list {
+	display: grid;
+	gap: 24px;
 }
-.cart-count {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 20px;
-	height: 20px;
-	padding: 0 5px;
-	background: var(--c-primary);
-	color: #111;
-	font-size: 11px;
-	font-weight: 800;
-}
-.product-card {
-	display: flex;
-	flex-direction: column;
-	text-align: left;
+.game-block {
+	display: grid;
+	grid-template-columns: 1fr 1.5fr;
+	gap: 35px;
+	align-items: stretch;
 	border: 1px solid var(--c-border);
-	background: var(--c-bg-primary);
 	padding: 24px;
+}
+.game-card {
+	text-align: left;
 	min-width: 0;
-	transition:
-		border-color 0.2s,
-		transform 0.2s;
+	transition: transform 0.2s;
 }
-.product-card:hover {
+.game-card:hover {
 	transform: translateY(-4px);
-	border-color: var(--c-primary);
 }
-.product-card-top {
+.game-card:hover .game-word {
+	color: var(--c-primary);
+}
+.game-card-top {
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
@@ -92,58 +78,60 @@ h2 {
 	color: var(--c-text-muted);
 	letter-spacing: 0.04em;
 }
-.product-visual {
+.game-word {
+	display: block;
+	font: 900 clamp(3rem, 6vw, 5.5rem)/1 var(--ff-display);
+	letter-spacing: 0;
+	padding: 30px 0;
+	color: var(--c-text-strong);
+	transition: color 0.2s;
+}
+.game-word.compact {
+	font-size: clamp(2rem, 3.7vw, 3.3rem);
+}
+.game-card-bottom {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	padding: 46px 0;
-	background: var(--c-bg-secondary);
-	margin: 20px 0;
-}
-.product-visual img {
-	opacity: 0.65;
-}
-.product-card:hover .product-visual img {
-	opacity: 1;
-}
-.product-card-bottom {
-	display: flex;
-	align-items: flex-start;
 	justify-content: space-between;
-	gap: 12px;
 }
-.product-card-bottom strong {
-	display: block;
+.game-card-bottom strong {
 	font-size: 16px;
 }
-.product-card-bottom small {
+.game-card-bottom small {
 	display: block;
 	color: var(--c-text-muted);
 	font-size: 12px;
 	margin-top: 6px;
-	line-height: 1.6;
 }
-.product-price {
-	font: 700 18px/1 var(--ff-display);
+.game-arrow {
+	font-size: 24px;
 	color: var(--c-primary);
-	white-space: nowrap;
 }
-.add-to-cart {
-	margin-top: 20px;
-	padding: 13px 18px;
-	background: var(--c-primary);
-	color: #111;
-	font-size: 13px;
-	font-weight: 700;
-	border: 1px solid var(--c-primary);
+.game-details {
+	display: grid;
+	grid-template-columns: 1.6fr 1fr;
+	gap: 35px;
+	align-items: center;
+	border-left: 1px solid var(--c-border);
+	padding-left: 35px;
 }
-.add-to-cart:hover {
-	background: #eeee50;
+.game-details p:not(.eyebrow) {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--c-text-muted);
+	margin-top: 10px;
 }
-.add-to-cart.added {
-	background: transparent;
-	color: var(--c-text-strong);
-	border-color: var(--c-border);
+@media (max-width: 1000px) {
+	.game-block {
+		grid-template-columns: 1fr;
+	}
+	.game-details {
+		border-left: none;
+		padding-left: 0;
+		border-top: 1px solid var(--c-border);
+		padding-top: 24px;
+		grid-template-columns: 1fr;
+	}
 }
 @media (max-width: 640px) {
 	.hero-copy {
@@ -157,7 +145,7 @@ h2 {
 			linear-gradient(90deg, rgba(10, 11, 12, 0.85), rgba(10, 11, 12, 0.3)),
 			linear-gradient(0deg, #101112, transparent);
 	}
-	.market-hero h1 {
+	.games-hero h1 {
 		font-size: clamp(3.9rem, 16vw, 6rem);
 	}
 	.hero-description {

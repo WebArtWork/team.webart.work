@@ -54,7 +54,6 @@
 					[class.active]="matchView() === 'upcoming'"
 					[attr.aria-pressed]="matchView() === 'upcoming'"
 					(click)="matchView.set('upcoming')"
-					translate
 				>
 					Upcoming</button
 				><button
@@ -62,13 +61,12 @@
 					[class.active]="matchView() === 'results'"
 					[attr.aria-pressed]="matchView() === 'results'"
 					(click)="matchView.set('results')"
-					translate
 				>
 					Results
 				</button>
 			</div>
 		</div>
-		<p class="preview-note" translate>
+		<p class="preview-note">
 			Season preview · Illustrative fixtures and results · All times Kyiv
 		</p>
 		<div class="match-list" aria-live="polite">
@@ -84,7 +82,7 @@
 							<span class="team-name"
 								><img src="brand-logo.svg" alt="" width="29" height="34" />
 								WAW</span
-							><span class="versus" translate>VS</span
+							><span class="versus">VS</span
 							><span class="team-name"
 								><span class="opponent-badge">{{ match.badge }}</span
 								>{{ match.opponent }}</span
@@ -93,7 +91,7 @@
 						<div class="match-event">
 							{{ match.event }}<span>{{ match.format }} · Online</span>
 						</div>
-						<span class="scheduled" translate>SCHEDULED</span>
+						<span class="scheduled">SCHEDULED</span>
 					</article>
 				}
 			} @else {
@@ -102,7 +100,7 @@
 						<span class="game-label">{{ match.game }}</span>
 						<div class="match-date">
 							<strong>{{ match.date }}</strong
-							><span translate>FINAL</span>
+							><span>FINAL</span>
 						</div>
 						<div class="match-teams">
 							<span class="team-name"
@@ -117,7 +115,7 @@
 						<div class="match-event">
 							{{ match.event }}<span>{{ match.format }} · Online</span>
 						</div>
-						<span class="scheduled accent" translate>VICTORY</span>
+						<span class="scheduled accent">VICTORY</span>
 					</article>
 				}
 			}
@@ -142,7 +140,7 @@
 					<a class="game-card" [routerLink]="game.path">
 						<span class="game-card-top"
 							><span>WAW / {{ game.number }}</span
-							><span class="game-card-status" translate>ROSTER PREVIEW</span></span
+							><span class="game-card-status">ROSTER PREVIEW</span></span
 						>
 						<span class="game-word" [class.compact]="game.id === 'BRAWL STARS'">{{
 							game.id
@@ -172,40 +170,34 @@
 						width="1774"
 						height="887"
 						loading="lazy"
-					/><span class="news-tag" translate>CLUB</span>
+					/><span class="news-tag">CLUB</span>
 				</div>
-				<p class="news-meta"><span translate>CHAPTER 01</span> <span translate>CLUB JOURNAL</span></p>
-				<h3 translate>A new arena. The same Web Art Work spirit.</h3>
+				<p class="news-meta">CHAPTER 01 <span>CLUB JOURNAL</span></p>
+				<h3>A new arena. The same Web Art Work spirit.</h3>
 				<a class="story-link" routerLink="/news/a-new-arena"
-					><span translate>Read the story</span> <span aria-hidden="true">↗</span></a
+					>Read the story <span aria-hidden="true">↗</span></a
 				>
 			</article>
 			<article class="news-card">
 				<div class="news-visual news-type">
-					<span class="news-tag" translate>TEAMS</span><span><span translate>ONE TAG.</span><br /><em
-							><span translate>ALL IN.</span></em
-						></span
+					<span class="news-tag">TEAMS</span><span>ONE TAG.<br /><em>ALL IN.</em></span
 					><img src="brand-logo.svg" alt="" width="100" height="116" />
 				</div>
-				<p class="news-meta"><span translate>THE LINEUP</span> <span translate>TEAM NOTES</span></p>
-				<h3 translate>Different roles. One way forward.</h3>
+				<p class="news-meta">THE LINEUP <span>TEAM NOTES</span></p>
+				<h3>Different roles. One way forward.</h3>
 				<a class="story-link" routerLink="/news/one-way-forward"
-					><span translate>Read the story</span> <span aria-hidden="true">↗</span></a
+					>Read the story <span aria-hidden="true">↗</span></a
 				>
 			</article>
 			<article class="news-card">
 				<div class="news-visual news-community">
-					<span class="news-tag" translate>COMMUNITY</span
-					><span class="community-word"
-						><span translate>PLAY.</span><br /><span translate>CREATE.</span><br /><em
-							><span translate>REPEAT.</span></em
-						></span
-					>
+					<span class="news-tag">COMMUNITY</span
+					><span class="community-word">PLAY.<br />CREATE.<br /><em>REPEAT.</em></span>
 				</div>
-				<p class="news-meta"><span translate>OUR CULTURE</span> <span translate>COMMUNITY</span></p>
-				<h3 translate>For the people on both sides of the screen.</h3>
+				<p class="news-meta">OUR CULTURE <span>COMMUNITY</span></p>
+				<h3>For the people on both sides of the screen.</h3>
 				<a class="story-link" routerLink="/news/our-community"
-					><span translate>Read the story</span> <span aria-hidden="true">↗</span></a
+					>Read the story <span aria-hidden="true">↗</span></a
 				>
 			</article>
 		</div>

@@ -1,0 +1,417 @@
+:host {
+	display: block;
+}
+.game-hero {
+	background: #101112;
+	color: #fff;
+}
+.hero-image,
+.hero-shade {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.hero-shade {
+	background:
+		linear-gradient(90deg, rgba(10, 11, 12, 0.72), rgba(10, 11, 12, 0.12) 75%),
+		linear-gradient(0deg, #101112, transparent 35%);
+}
+.hero-copy {
+	padding: 90px 0 75px;
+}
+.game-hero h1 {
+	font: 900 clamp(3.4rem, 7vw, 6.5rem)/0.96 var(--ff-display);
+	letter-spacing: 0;
+	margin: 12px 0 0;
+	color: var(--c-primary);
+}
+.hero-description {
+	margin-top: 26px;
+	color: #ccc;
+	font-size: 17px;
+	line-height: 1.7;
+	max-width: 640px;
+}
+.hero-format {
+	margin-top: 14px;
+	color: var(--c-text-muted);
+	font-size: 13px;
+	letter-spacing: 0.05em;
+}
+.section-heading {
+	margin-bottom: 28px;
+}
+h2 {
+	font: 800 clamp(2rem, 4vw, 3.15rem)/1.06 var(--ff-display);
+	letter-spacing: 0;
+	margin: 10px 0 0;
+}
+.empty-note {
+	color: var(--c-text-muted);
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.text-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: 24px;
+	font-weight: 650;
+	font-size: 14px;
+}
+.text-link span {
+	color: var(--c-primary);
+	font-size: 20px;
+}
+
+/* Roster */
+.roster-list {
+	display: grid;
+}
+.roster-row {
+	display: grid;
+	grid-template-columns: 48px 1.1fr 0.7fr 0.9fr 1.6fr;
+	align-items: center;
+	gap: 20px;
+	padding: 20px 0;
+	border-top: 1px solid var(--c-border);
+}
+.roster-row:last-child {
+	border-bottom: 1px solid var(--c-border);
+}
+.roster-avatar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border: 1px solid var(--c-border);
+	border-radius: 50%;
+	font: 700 16px/1 var(--ff-display);
+	color: var(--c-primary);
+}
+.roster-identity {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+.roster-identity strong {
+	font-size: 15px;
+	letter-spacing: 0.02em;
+}
+.roster-role {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	color: var(--c-text-muted);
+}
+.roster-staff-tag {
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	color: var(--c-primary);
+	border: 1px solid var(--c-primary);
+	padding: 2px 6px;
+}
+.roster-row.staff {
+	background: var(--c-bg-secondary);
+}
+.roster-country {
+	font-size: 13px;
+	color: var(--c-text-muted);
+}
+.roster-joined {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 10px;
+	letter-spacing: 0.09em;
+	color: var(--c-text-muted);
+}
+.roster-joined strong {
+	font-size: 13px;
+	letter-spacing: 0;
+	color: var(--c-text-strong);
+}
+.roster-note {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--c-text-muted);
+}
+
+/* Matches */
+.match-list {
+	display: grid;
+	gap: 0;
+}
+.match-row {
+	display: grid;
+	grid-template-columns: 90px 1.4fr 1.4fr 100px;
+	align-items: center;
+	gap: 20px;
+	padding: 22px 0;
+	border-top: 1px solid var(--c-border);
+}
+.match-row:last-child {
+	border-bottom: 1px solid var(--c-border);
+}
+.match-date {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 13px;
+	color: var(--c-text-muted);
+}
+.match-teams {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: 14px;
+	font-weight: 650;
+}
+.versus {
+	color: var(--c-text-muted);
+	font-size: 12px;
+}
+.opponent-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	margin-right: 6px;
+	border: 1px solid var(--c-border);
+	font-size: 11px;
+}
+.match-event {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 13px;
+}
+.match-event span {
+	color: var(--c-text-muted);
+	font-size: 12px;
+}
+.scheduled {
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-align: right;
+	color: var(--c-text-muted);
+}
+
+/* Tournaments */
+.tournament-list {
+	display: grid;
+}
+.tournament-row {
+	display: grid;
+	grid-template-columns: 1fr 165px 110px;
+	align-items: center;
+	gap: 20px;
+	padding: 22px 0;
+	border-top: 1px solid var(--c-border);
+}
+.tournament-row:last-child {
+	border-bottom: 1px solid var(--c-border);
+}
+.tournament-info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.tournament-info strong {
+	font-size: 15px;
+	font-weight: 650;
+}
+.tournament-info span {
+	font-size: 12px;
+	color: var(--c-text-muted);
+}
+.tournament-dates {
+	font-size: 13px;
+	color: var(--c-text-muted);
+}
+.tournament-status {
+	font-size: 12px;
+	letter-spacing: 0.09em;
+	text-align: right;
+	color: var(--c-text-muted);
+}
+
+/* Media */
+.gallery-grid {
+	margin-bottom: 24px;
+}
+.gallery-card {
+	position: relative;
+	margin: 0;
+	border: 1px solid var(--c-border);
+	overflow: hidden;
+}
+.gallery-card img {
+	display: block;
+	width: 100%;
+	height: 160px;
+	object-fit: cover;
+}
+.gallery-tag {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	background: var(--c-primary);
+	color: #111;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 4px 8px;
+}
+.gallery-card figcaption {
+	padding: 12px 14px;
+	font-size: 13px;
+	color: var(--c-text-muted);
+}
+.video-list,
+.stream-list {
+	display: grid;
+	margin-bottom: 8px;
+}
+.video-row,
+.stream-row {
+	display: grid;
+	grid-template-columns: 30px 90px 1fr 90px;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 0;
+	border-top: 1px solid var(--c-border);
+	font-size: 13px;
+}
+.stream-row {
+	grid-template-columns: 90px 1fr 180px 90px;
+}
+.video-play {
+	color: var(--c-primary);
+}
+.video-tag,
+.stream-status {
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	color: var(--c-text-muted);
+}
+.stream-status.replay {
+	color: var(--c-primary);
+}
+.video-length,
+.stream-channel {
+	text-align: right;
+	color: var(--c-text-muted);
+	font-size: 12px;
+}
+.stream-schedule {
+	color: var(--c-text-muted);
+	font-size: 12px;
+}
+
+/* News */
+.news-grid {
+	margin-bottom: 8px;
+}
+.news-card {
+	border: 1px solid var(--c-border);
+	padding: 20px;
+}
+.news-meta {
+	display: flex;
+	gap: 10px;
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	color: var(--c-text-muted);
+	margin: 0 0 12px;
+}
+.news-card h3 {
+	font-size: 17px;
+	line-height: 1.4;
+	margin: 0 0 14px;
+}
+.story-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 13px;
+	font-weight: 650;
+}
+.story-link span {
+	color: var(--c-primary);
+}
+
+@media (max-width: 1000px) {
+	.roster-row {
+		grid-template-columns: 40px 1fr 1fr;
+		row-gap: 8px;
+	}
+	.roster-note {
+		grid-column: 1 / -1;
+	}
+	.roster-joined {
+		display: none;
+	}
+	.match-row {
+		grid-template-columns: 70px 1fr 1fr;
+		gap: 12px;
+	}
+	.scheduled {
+		display: none;
+	}
+	.tournament-row {
+		grid-template-columns: 1fr 125px;
+	}
+	.tournament-status {
+		display: none;
+	}
+	.video-row,
+	.stream-row {
+		grid-template-columns: 24px 70px 1fr;
+	}
+	.video-length,
+	.stream-channel,
+	.stream-schedule {
+		display: none;
+	}
+}
+@media (max-width: 640px) {
+	.hero-copy {
+		padding: 70px 0 55px;
+	}
+	.hero-image {
+		object-position: 62% center;
+	}
+	.hero-shade {
+		background:
+			linear-gradient(90deg, rgba(10, 11, 12, 0.85), rgba(10, 11, 12, 0.3)),
+			linear-gradient(0deg, #101112, transparent);
+	}
+	.game-hero h1 {
+		font-size: clamp(2.8rem, 13vw, 4.5rem);
+	}
+	.hero-description {
+		font-size: 15px;
+	}
+	.match-row,
+	.tournament-row {
+		grid-template-columns: 1fr;
+		gap: 8px;
+	}
+	.roster-row {
+		grid-template-columns: 40px 1fr;
+	}
+	.roster-country {
+		grid-column: 2;
+	}
+	.news-grid {
+		grid-template-columns: 1fr !important;
+	}
+}
